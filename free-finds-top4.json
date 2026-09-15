@@ -1,0 +1,44 @@
+{
+  "updated": "2026-09-15",
+  "brand": "Free Finds",
+  "source": "CleverTap Notification Clicked / wzrk_c2a, machine clicks excluded",
+  "page": "https://join.modefreefinds.com/free-finds-top-freebies/",
+  "articles": [
+    {
+      "rank": 1,
+      "title": "Cayman Jack Escape-to-Paradise Sweepstakes — Win $25,000 Cash (Daily Entry Open!)",
+      "url": "https://modefreefinds.com/2026/06/04/cayman-jack-escape-to-paradise-sweepstakes-win-25000-cash-daily-entry-open/",
+      "img": "https://modefreefinds.com/wp-content/uploads/2026/06/Win-a-25000Cash-Prize-in-The-Cayman-Jack.png",
+      "w": 600,
+      "h": 400,
+      "cta": "Enter now"
+    },
+    {
+      "rank": 2,
+      "title": "Wonder Deploy The Joy: Win a $10K Cheque",
+      "url": "https://modefreefinds.com/2026/04/03/wonder-deploy-the-joy-win-a-10k-cheque/",
+      "img": "https://modefreefinds.com/wp-content/uploads/2026/04/Wonder-Deploy-The-Joy.png",
+      "w": 600,
+      "h": 400,
+      "cta": "Enter now"
+    },
+    {
+      "rank": 3,
+      "title": "Apply to Be an International Ice Cream Taster for $10K a Month",
+      "url": "https://modefreefinds.com/2026/09/05/apply-to-be-an-international-ice-cream-taster-for-10k-a-month/",
+      "img": "https://modefreefinds.com/wp-content/uploads/2026/09/International-Ice-Cream-Taster.jpg",
+      "w": 600,
+      "h": 300,
+      "cta": "Apply now"
+    },
+    {
+      "rank": 4,
+      "title": "FREE OptiWize Joint Health Supplement",
+      "url": "https://modefreefinds.com/2026/09/05/free-optiwize-joint-health-supplement/",
+      "img": "https://modefreefinds.com/wp-content/uploads/2026/09/OptiWize-Full-Size-Supplements.jpg",
+      "w": 600,
+      "h": 300,
+      "cta": "Get the freebie"
+    }
+  ]
+}
