@@ -222,7 +222,7 @@
   }
 
   function ctaHref(dealId, sub2, sub3) {
-    return 'https://modemobile.sng.link/Bf9sy/ardl'
+    return 'https://modemobile.sng.link/Bf9sy/8uvym/0zvg'
       + '?_dl=mode-mobile%3A%2F%2Funified-offers%2F' + encodeURIComponent(dealId) + '%2F'
       + '&aff_sub2=' + encodeURIComponent(sub2)
       + '&aff_sub3=' + encodeURIComponent(sub3)
