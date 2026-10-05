@@ -12,7 +12,7 @@
  *   data-skin  "game-payouts" | "patriot-payouts"         which brand to look like
  *   data-sub3  optional, overrides the aff_sub3 tracking value for this page
  *
- * The data files are rewritten daily by the scheduled tasks. This file is not â
+ * The data files are rewritten daily by the scheduled tasks. This file is not --
  * it only changes when the design does.
  *
  * config.json holds the CTA link base. It lives in the feed, NOT in here, because
@@ -26,7 +26,7 @@
   var FONT = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap';
 
   var CONFIG_FILE = 'config.json';
-  /* Fallback only â config.json is the source of truth. */
+  /* Fallback only -- config.json is the source of truth. */
   var DEFAULT_CTA_BASE = 'https://modemobile.sng.link/Bf9sy/8uvym/0zvg';
 
   var FEEDS = {
@@ -39,7 +39,7 @@
   var SKINS = {
 
     'game-payouts': {
-      mark: 'ð®',                  /* gamepad */
+      mark: '\ud83c\udfae',                  /* gamepad */
       wordmark: ['Mode', 'Game Payouts'],
       tokens: [
         '--bg:hsl(262 16% 7%)',
@@ -84,7 +84,7 @@
     },
 
     'patriot-payouts': {
-      mark: 'ð¦',                  /* eagle */
+      mark: '\ud83e\udd85',                  /* eagle */
       wordmark: ['Patriot', 'Payouts'],
       tokens: [
         '--bg:hsl(210 20% 98%)',
@@ -110,6 +110,21 @@
         '--pay-ink:hsl(142 71% 27%)',
         '--pay-strong:hsl(142 71% 24%)',
         '--foot-strong:hsl(220 20% 32%)',
+        /* lander parity (gamesusa.modefreefinds.com): navy logo tile with a red
+           mark, gold pill CTA with navy ink, uppercase Montserrat headline. */
+        '--mark-a:hsl(222 47% 14%)',
+        '--mark-b:hsl(222 47% 9%)',
+        '--mark-ink:hsl(0 78% 50%)',
+        '--mark-glow:hsl(222 47% 14% / .45)',
+        '--cta-a:hsl(45 95% 54%)',
+        '--cta-b:hsl(45 95% 46%)',
+        '--cta-ink:hsl(222 60% 14%)',
+        '--cta-glow:hsl(45 95% 50% / .50)',
+        '--cta-font:800 12.5px/1 Montserrat,Inter,sans-serif',
+        '--cta-tt:uppercase',
+        '--cta-ls:.3px',
+        '--title-tt:uppercase',
+        '--title-ls:-.2px',
         '--shadow:0 1px 2px rgba(16,24,40,.04), 0 12px 32px -8px rgba(16,24,40,.12)'
       ].join(';'),
       copy: {
@@ -131,7 +146,7 @@
 
   var FOOT_TAIL =
     'Earnings vary by player and by how far you get in each game.<br>' +
-    'Game offers are a snapshot of Modeâs dynamic rewards platform. Offers vary and may ' +
+    'Game offers are a snapshot of Mode\u2019s dynamic rewards platform. Offers vary and may ' +
     'change or end without prior notice at any time. Act now for the best chance to be rewarded!';
 
   /* ------------------------------------------------------------------ css */
@@ -153,16 +168,19 @@
 
     '.brand{display:flex;align-items:center;justify-content:center;gap:9px;margin:0 0 6px;}',
     '.mark{width:34px;height:34px;flex:0 0 34px;border-radius:10px;',
-      'background:linear-gradient(150deg,var(--primary),var(--primary-dark));',
+      'background:linear-gradient(150deg,var(--mark-a,var(--primary)),var(--mark-b,var(--primary-dark)));',
+      'color:var(--mark-ink,#fff);',
       'display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1;',
-      'box-shadow:0 4px 14px -4px var(--primary-glow);}',
+      'font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",Inter,sans-serif;',
+      'box-shadow:0 4px 14px -4px var(--mark-glow,var(--primary-glow));}',
     '.wm{font:800 21px/1 Montserrat,Inter,sans-serif;letter-spacing:-.48px;white-space:nowrap;',
       'color:var(--wordmark-a);}',
     '.wm b{font-weight:800;color:var(--wordmark-b);}',
 
     '.eyebrow{text-align:center;font-size:10.5px;font-weight:700;letter-spacing:1.4px;',
       'text-transform:uppercase;color:var(--muted-fg);margin:0 0 16px;}',
-    '.title{font:800 23px/1.2 Montserrat,Inter,sans-serif;letter-spacing:-.48px;',
+    '.title{font:800 23px/1.2 Montserrat,Inter,sans-serif;',
+      'letter-spacing:var(--title-ls,-.48px);text-transform:var(--title-tt,none);',
       'text-align:center;margin:0 0 6px;color:var(--fg);}',
     '.title em{font-style:normal;color:var(--primary);}',
     '.sub{text-align:center;font-size:13.5px;color:var(--muted-fg);margin:0 auto 18px;max-width:42ch;}',
@@ -197,10 +215,12 @@
     '.pill svg{width:11px;height:11px;flex:0 0 11px;}',
 
     '.cta{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:6px;',
-      'background:linear-gradient(145deg,var(--primary),var(--primary-dark));',
-      'color:#fff;text-decoration:none;font:700 13px/1 Inter,sans-serif;',
+      'background:linear-gradient(145deg,var(--cta-a,var(--primary)),var(--cta-b,var(--primary-dark)));',
+      'color:var(--cta-ink,#fff);text-decoration:none;',
+      'font:var(--cta-font,700 13px/1 Inter,sans-serif);',
+      'text-transform:var(--cta-tt,none);letter-spacing:var(--cta-ls,0);',
       'padding:11px 16px;border-radius:999px;white-space:nowrap;',
-      'box-shadow:0 4px 14px -4px var(--primary-glow);',
+      'box-shadow:0 4px 14px -4px var(--cta-glow,var(--primary-glow));',
       'transition:filter .15s ease, transform .15s ease;}',
     '.cta:hover{filter:brightness(1.1);transform:translateY(-1px);}',
     '.cta svg{width:11px;height:11px;flex:0 0 11px;}',
