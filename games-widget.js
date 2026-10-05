@@ -11,6 +11,11 @@
  *   data-feed  "new-games" | "top-games"                  which dataset to show
  *   data-skin  "game-payouts" | "patriot-payouts"         which brand to look like
  *   data-sub3  optional, overrides the aff_sub3 tracking value for this page
+ *   data-cta-href  optional. Sends EVERY card to this exact URL instead of
+ *                  building a per-game deep link. Used by landers whose CTA
+ *                  carries page-level merge tags: those are substituted in the
+ *                  page HTML before this script reads the attribute, which is
+ *                  why the URL has to live on the page and not in this file.
  *
  * The data files are rewritten daily by the scheduled tasks. This file is not --
  * it only changes when the design does.
@@ -269,7 +274,7 @@
 
   /* -------------------------------------------------------------- render */
 
-  function render(root, skin, copy, items, sub2, sub3, base) {
+  function render(root, skin, copy, items, sub2, sub3, base, override) {
     var cards = items.map(function (it, i) {
       var pill = it.payout
         ? '<span class="pill pay">' + SVG_COIN + '<span><b>$' + esc(it.payout) + '</b>/hr avg</span></span>'
@@ -280,7 +285,7 @@
         + '<img class="icon" src="' + esc(it.icon) + '" width="60" height="60" alt="'
         + esc(it.name) + '" loading="lazy">'
         + '<div class="meta"><p class="name">' + esc(it.name) + '</p>' + pill + '</div>'
-        + '<a class="cta" href="' + esc(ctaHref(base, it.dealId, sub2, sub3))
+        + '<a class="cta" href="' + esc(override || ctaHref(base, it.dealId, sub2, sub3))
         + '" target="_blank" rel="noopener">Play Now ' + SVG_ARROW + '</a>'
         + '</li>';
     }).join('');
@@ -316,6 +321,7 @@
 
     var copy = skin.copy[feedKey];
     var sub3 = host.getAttribute('data-sub3') || 'ncl-mode-deals-lander';
+    var override = host.getAttribute('data-cta-href') || '';
     var root = host.attachShadow ? host.attachShadow({ mode: 'open' }) : host;
 
     loadFont();
@@ -337,7 +343,7 @@
       .then(function (res) {
         var items = res[0], base = res[1];
         if (!Array.isArray(items) || !items.length) throw new Error('empty feed');
-        render(root, skin, copy, items.slice(0, 5), feed.sub2, sub3, base);
+        render(root, skin, copy, items.slice(0, 5), feed.sub2, sub3, base, override);
       })
       .catch(function (err) {
         /* Fail quietly: collapse rather than leave a broken shell on the page. */
